@@ -97,8 +97,8 @@
 	// La variable globale SDL_screen est initialisée
 void init_graphics(int W, int H) {
 	// Initialisation d'une taille raisonnable
-	if ((W<10) || (W>MAX_WIDTH )) W = 800;
-	if ((H<10) || (H>MAX_HEIGHT)) H = 600;
+	if ((W<10) || (W>MAX_WIDTH )) W = 800; //800
+	if ((H<10) || (H>MAX_HEIGHT)) H = 600;  //600
 	// Initialisation de la SDL_surface
 	WIDTH  = W;
 	HEIGHT = H;

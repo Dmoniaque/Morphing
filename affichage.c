@@ -4,9 +4,10 @@
 #include "uvsqgraphics_2.h"
 
 void affiche_deux_images(Stock I, Stock I2) {
-    int espacement = 10; // espace entre les deux images
+    int espace = 10;
+    //float pas=0.5;
+    //int decalage= I.largeur *pas + espace;
 
-    // Parcours de la première image
     for (int y = 0; y < I.hauteur; y++) {
         for (int x = 0; x < I.largeur; x++) {
             if (I.pixels && I.pixels[y]) {
@@ -15,11 +16,10 @@ void affiche_deux_images(Stock I, Stock I2) {
         }
     }
 
-    // Parcours de la deuxième image (à droite avec espacement)
     for (int y = 0; y < I2.hauteur; y++) {
         for (int x = 0; x < I2.largeur; x++) {
             if (I2.pixels && I2.pixels[y]) {
-                draw_pixel((POINT){x + I.largeur + espacement, y}, I2.pixels[y][x]);
+                draw_pixel((POINT){x + I.largeur + espace, y}, I2.pixels[y][x]);
             }
         }
     }

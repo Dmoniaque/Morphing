@@ -1,5 +1,5 @@
 run: prog
-	./prog voiture
+	./prog lion chien
 
 prog: affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o
 	gcc -Wall -o prog affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o `sdl2-config --cflags --libs` -lSDL2_ttf -lm
