@@ -32,9 +32,9 @@
 //#include <SDL_ttf.h>
 //#include <SDL3_ttf/SDL_ttf.h>
 // Si on veut changer la police, c'est ici.
-//#define POLICE_NAME "/usr/share/fonts/truetype/verdana.ttf"
+#define POLICE_NAME "/usr/share/fonts/truetype/verdana.ttf"
 //#define POLICE_NAME "POL/verdana.ttf"
-#define POLICE_NAME "POL/Arial Unicode.ttf"
+//#define POLICE_NAME "POL/Arial Unicode.ttf"
 
 #include "uvsqgraphics_2.h"
 

@@ -34,7 +34,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <SDL_ttf.h>
 
 // A décommenter si on fonctionne sur un host puissant
