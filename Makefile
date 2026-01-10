@@ -34,4 +34,5 @@ main.o: main.c transfo.h lecture_ecriture.h uvsqgraphics_2.h affichage.h selecti
 clean:
 	rm -f *.o
 	rm -f *.txt
+	rm -f *.mp4
 	rm -f prog
