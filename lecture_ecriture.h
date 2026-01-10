@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "uvsqgraphics_2.h"
 #ifndef LECTURE_ECRITURE_H
 #define LECTURE_ECRITURE_H
 
@@ -10,7 +11,8 @@ typedef struct{
     int largeur;
     int hauteur;
     int range;
-    int *point;
+    POINT point[100];
+    int nb_point;
     int *triangle;
     COULEUR** pixels;
 }Stock;

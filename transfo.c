@@ -4,7 +4,7 @@
 
 void transfo(char * nom){
     char commande[256];
-    snprintf(commande, sizeof(commande), "convert Images/originale/%s.jpg -compress none Images/transformee/%s.ppm", nom, nom);
+    snprintf(commande, sizeof(commande), "convert Images/originale/%s.jpg -resize 500x500^ -gravity center -extent 500x500 -compress none Images/transformee/%s.ppm", nom, nom);  //IA GEMINI MERCI
     system(commande);
     //system("convert Images/originale/.jpg -define ppm:format=ascii Images/transformee/%s.ppm");
 

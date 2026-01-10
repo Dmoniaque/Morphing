@@ -19,6 +19,9 @@ COULEUR** allouer_pixel(int largeur, int hauteur){
 
 Stock lire_fichier (char *nom){
         Stock valeur;
+        valeur.nb_point=0;
+        valeur.triangle=NULL;
+
         FILE *F;
         F=fopen(nom, "r");
 

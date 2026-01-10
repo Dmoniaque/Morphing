@@ -4,7 +4,7 @@
 #include "uvsqgraphics_2.h"
 
 void affiche_deux_images(Stock I, Stock I2) {
-    int espace = 10;
+    int espace = 200;
     //float pas=0.5;
     //int decalage= I.largeur *pas + espace;
 
@@ -25,5 +25,5 @@ void affiche_deux_images(Stock I, Stock I2) {
     }
 
     // Affiche tout à la fin
-    affiche_all();
+    //affiche_all();
 }
