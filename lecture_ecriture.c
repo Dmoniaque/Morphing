@@ -20,7 +20,8 @@ COULEUR** allouer_pixel(int largeur, int hauteur){
 Stock lire_fichier (char *nom){
         Stock valeur;
         valeur.nb_point=0;
-        valeur.triangle=NULL;
+        //valeur.triangle=NULL;
+        valeur.nb_triangle=0;
 
         FILE *F;
         F=fopen(nom, "r");
@@ -77,4 +78,28 @@ void ecrire_fichier(Stock I, char *nom){
                 fprintf(F, "\n");
         }
         fclose(F);
+}
+
+void lire_points(Stock *I1, Stock *I2, char *nom_fichier){
+        FILE *f= fopen(nom_fichier, "r");
+        
+         if (f == NULL) {
+            printf("Attention: impossible d'ouvrir %s\n", nom_fichier);
+            I1->nb_point = 0;
+            I2->nb_point = 0;
+            return;  // ← CE RETURN EST ESSENTIEL !
+        }
+        
+        int x1, y1, x2, y2;
+        I1->nb_point=0;
+        I2->nb_point=0;
+
+        while (fscanf(f, "%d %d %d %d", &x1, &y1, &x2, &y2)==4){
+                int i= I1->nb_point;
+                I1->point[i]= (POINT){x1, y1};
+                I2->point[i]= (POINT){x2, y2};
+                I1->nb_point++;
+                I2->nb_point++;
+        }
+        fclose(f);
 }

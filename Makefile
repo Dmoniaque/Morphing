@@ -1,8 +1,8 @@
 run: prog
-	./prog lion chien
+	./prog macron trump
 
-prog: enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o
-	gcc -Wall -o prog enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o `sdl2-config --cflags --libs` -lSDL2_ttf -lm
+prog: couleur.o intermediaire.o enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o
+	gcc -g -Wall -o prog couleur.o intermediaire.o enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o `sdl2-config --cflags --libs` -lSDL2_ttf -lm
 
 transfo.o: transfo.c transfo.h
 	gcc -Wall -I/usr/include/SDL2 -c transfo.c -o transfo.o
@@ -22,7 +22,13 @@ selection.o: selection.c selection.h
 enregistrer.o: enregistrer.c enregistrer.h
 	gcc -Wall -I/usr/include/SDL2 -c enregistrer.c -o enregistrer.o
 
-main.o: main.c transfo.h lecture_ecriture.h uvsqgraphics_2.h affichage.h selection.h enregistrer.h
+intermediaire.o: intermediaire.c intermediaire.h
+	gcc -Wall -I/usr/include/SDL2 -c intermediaire.c -o intermediaire.o
+
+couleur.o: couleur.c couleur.h
+	gcc -Wall -I/usr/include/SDL2 -c couleur.c -o couleur.o
+
+main.o: main.c transfo.h lecture_ecriture.h uvsqgraphics_2.h affichage.h selection.h enregistrer.h intermediaire.h couleur.h
 	gcc -Wall -I/usr/include/SDL2 -c main.c -o main.o
 
 clean:

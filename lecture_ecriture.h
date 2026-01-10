@@ -8,12 +8,18 @@
 typedef uint32_t COULEUR;
 
 typedef struct{
+    int s1, s2, s3;
+}TRIANGLE;
+
+typedef struct{
     int largeur;
     int hauteur;
     int range;
     POINT point[100];
     int nb_point;
-    int *triangle;
+    //int nb_triangle;
+    TRIANGLE triangle[400];
+    int nb_triangle;
     COULEUR** pixels;
 }Stock;
 
@@ -22,5 +28,6 @@ COULEUR** allouer_pixel(int largeur, int hauteur);
 Stock lire_fichier (char *nom);
 void desaluer_pixels(COULEUR** pixels, int hauteur);
 void ecrire_fichier(Stock I, char *nom);
+void lire_points(Stock *I1, Stock *I2, char *nom_fichier);
 
 #endif

@@ -9,7 +9,7 @@
 void selection(Stock *I1, Stock *I2){
     int espace =200;
     
-    for (int j=0; j<3; j++){
+    for (int j=0; j<12; j++){
         int i= I1->nb_point;
         POINT gauche= wait_clic();
         I1->point[i]= gauche;
@@ -77,5 +77,5 @@ void selection(Stock *I1, Stock *I2){
             fin=1;
         }
     }
-    exit(0);
+    //exit(0);
 }
