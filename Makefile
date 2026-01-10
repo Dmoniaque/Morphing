@@ -1,8 +1,8 @@
 run: prog
 	./prog lion chien
 
-prog: selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o
-	gcc -Wall -o prog selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o `sdl2-config --cflags --libs` -lSDL2_ttf -lm
+prog: enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o
+	gcc -Wall -o prog enregistrer.o selection.o affichage.o uvsqgraphics.o lire_ecrire.o transfo.o main.o `sdl2-config --cflags --libs` -lSDL2_ttf -lm
 
 transfo.o: transfo.c transfo.h
 	gcc -Wall -I/usr/include/SDL2 -c transfo.c -o transfo.o
@@ -19,9 +19,13 @@ uvsqgraphics.o: uvsqgraphics_2.c uvsqgraphics_2.h
 selection.o: selection.c selection.h
 	gcc -Wall -I/usr/include/SDL2 -c selection.c -o selection.o
 
-main.o: main.c transfo.h lecture_ecriture.h uvsqgraphics_2.h affichage.h selection.h
+enregistrer.o: enregistrer.c enregistrer.h
+	gcc -Wall -I/usr/include/SDL2 -c enregistrer.c -o enregistrer.o
+
+main.o: main.c transfo.h lecture_ecriture.h uvsqgraphics_2.h affichage.h selection.h enregistrer.h
 	gcc -Wall -I/usr/include/SDL2 -c main.c -o main.o
 
 clean:
 	rm -f *.o
+	rm -f *.txt
 	rm -f prog

@@ -5,6 +5,7 @@
 #include "uvsqgraphics_2.h"
 #include "affichage.h"
 #include "selection.h"
+#include "enregistrer.h"
 
 int main(int argc, char * argv[]){
     char * nom=argv[1];

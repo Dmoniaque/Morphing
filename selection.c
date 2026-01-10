@@ -3,6 +3,7 @@
 #include "uvsqgraphics_2.h"
 #include "lecture_ecriture.h"
 #include "affichage.h"
+#include "enregistrer.h"
 #include "selection.h"
 
 void selection(Stock *I1, Stock *I2){
@@ -32,6 +33,7 @@ void selection(Stock *I1, Stock *I2){
         I1->nb_point++;
         I2->nb_point++;
     }
+
     affiche_deux_images(*I1, *I2);
     for (int k=0; k<I1->nb_point; k++){
             draw_circle(I1->point[k], 10, rouge);
@@ -46,6 +48,34 @@ void selection(Stock *I1, Stock *I2){
             aff_int(k+1, 15, (POINT){x_txt, y_txt}, blanc);
             aff_int(I1->point[k].x, 12, (POINT){x_txt+30, y_txt}, blanc);
             aff_int(I2->point[k].x, 12, (POINT){x_txt+110, y_txt}, blanc);
-        }
+    }
+
+    int h= I1->hauteur;
+    int l= I1->largeur;
+    POINT b1= {l +10, h-75};
+    POINT b2= {l+190, h-45};
+    draw_fill_rectangle(b1, b2, blanc);
+    aff_pol("ENREGISTRER", 12, (POINT){b1.x + 45, b1.y +10}, noir);
+
+    POINT d1= {l +10, h-35};
+    POINT d2= {l+190, h-5};
+    draw_fill_rectangle(d1, d2, rouge);
+    aff_pol("QUITTER", 12, (POINT){d1.x + 65, d1.y +10}, blanc);    
+    
     affiche_all();
+
+    int fin=0;
+    while (!fin){
+        POINT clic=wait_clic();
+        if (clic.x >= b1.x && clic.x <= b2.x && clic.y >= b1.y && clic.y <= b2.y){
+            enregistrer(*I1, *I2, "point.txt");
+            printf("Valeurs enregistrées\n");
+        }
+
+        if (clic.x >= d1.x && clic.x <= d2.x && clic.y >= d1.y && clic.y <= d2.y){
+            printf("Quitter\n");
+            fin=1;
+        }
+    }
+    exit(0);
 }
