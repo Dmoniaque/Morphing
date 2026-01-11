@@ -35,4 +35,5 @@ clean:
 	rm -f *.o
 	rm -f *.txt
 	rm -f *.mp4
+	rm -f *.ppm
 	rm -f prog

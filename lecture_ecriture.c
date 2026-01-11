@@ -20,7 +20,6 @@ COULEUR** allouer_pixel(int largeur, int hauteur){
 Stock lire_fichier (char *nom){
         Stock valeur;
         valeur.nb_point=0;
-        //valeur.triangle=NULL;
         valeur.nb_triangle=0;
 
         FILE *F;
@@ -29,15 +28,11 @@ Stock lire_fichier (char *nom){
         int c;
         while ((c=fgetc(F)) !='\n'){}
 
-
         fscanf(F, "%d", &valeur.largeur);
         fscanf(F, "%d", &valeur.hauteur);
         fscanf(F, "%d", &valeur.range);
         valeur.pixels =allouer_pixel(valeur.largeur, valeur.hauteur);
-        /*
-        I.pixels[y]=couleur_RGB(ligne);
-        I.pixels[x]=couleur_RGB(colonne);
-        */
+
         int r,g,b;
         for (int i=0; i<valeur.hauteur; i++){
                 for (int j=0; j<valeur.largeur; j++){
@@ -84,10 +79,10 @@ void lire_points(Stock *I1, Stock *I2, char *nom_fichier){
         FILE *f= fopen(nom_fichier, "r");
         
          if (f == NULL) {
-            printf("Attention: impossible d'ouvrir %s\n", nom_fichier);
+            printf("Erreur: impossible d'ouvrir %s\n", nom_fichier);
             I1->nb_point = 0;
             I2->nb_point = 0;
-            return;  // ← CE RETURN EST ESSENTIEL !
+            return;
         }
         
         int x1, y1, x2, y2;

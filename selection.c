@@ -9,18 +9,18 @@
 void selection(Stock *I1, Stock *I2){
     int espace =200;
     
-    for (int j=0; j<12; j++){
+    for (int j=0; j<23; j++){   //oblige de cliquer tant qu'on a pas selectionne 23 
         int i= I1->nb_point;
         POINT gauche= wait_clic();
         I1->point[i]= gauche;
 
-        affiche_deux_images(*I1, *I2);
+        affiche_deux_images(*I1, *I2); //on rappelle parce que sinon les images disparraisent
         draw_circle(gauche, 10, rouge);
         aff_int(i+1, 15, (POINT){gauche.x+15, gauche.y+15}, blanc);
         affiche_all();
 
         POINT droite= wait_clic();
-        I2->point[i].x= droite.x - (I1->largeur+espace);
+        I2->point[i].x= droite.x - (I1->largeur+espace); //fais une soustraction parce que comme les images sont decale, le point clique n'est pas "vraiment" le point qu'on veut
         I2->point[i].y= droite.y;
 
         affiche_deux_images(*I1, *I2);
@@ -35,7 +35,7 @@ void selection(Stock *I1, Stock *I2){
     }
 
     affiche_deux_images(*I1, *I2);
-    for (int k=0; k<I1->nb_point; k++){
+    for (int k=0; k<I1->nb_point; k++){// on affiche les coordonnes saisies qui sont enregistrer dans les tableaux
             draw_circle(I1->point[k], 10, rouge);
             POINT blabla={I2->point[k].x+I1->largeur + espace, I2->point[k].y};
             draw_circle(blabla, 10, rouge);
@@ -50,6 +50,7 @@ void selection(Stock *I1, Stock *I2){
             aff_int(I2->point[k].x, 12, (POINT){x_txt+110, y_txt}, blanc);
     }
 
+    //cree les boutons enregistrer et quitter
     int h= I1->hauteur;
     int l= I1->largeur;
     POINT b1= {l +10, h-75};
@@ -67,12 +68,12 @@ void selection(Stock *I1, Stock *I2){
     int fin=0;
     while (!fin){
         POINT clic=wait_clic();
-        if (clic.x >= b1.x && clic.x <= b2.x && clic.y >= b1.y && clic.y <= b2.y){
+        if (clic.x >= b1.x && clic.x <= b2.x && clic.y >= b1.y && clic.y <= b2.y){ //on regarde si l'utilisateur a bien clique sur enregister si oui on ecrits les points enregistrer dans .txt
             enregistrer(*I1, *I2, "point.txt");
             printf("Valeurs enregistrées\n");
         }
 
-        if (clic.x >= d1.x && clic.x <= d2.x && clic.y >= d1.y && clic.y <= d2.y){
+        if (clic.x >= d1.x && clic.x <= d2.x && clic.y >= d1.y && clic.y <= d2.y){ //same mas pour quitter et que ca puisse lancer le reste du programme
             printf("Quitter\n");
             fin=1;
         }
